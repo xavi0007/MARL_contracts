@@ -4,7 +4,10 @@ The rendering function takes as input the parameters of the config file, the sto
 
 """
 import copy
-from ray.rllib.agents import ppo
+try:
+    from ray.rllib.agents import ppo
+except ImportError:
+    from ray.rllib.algorithms import ppo
 from PIL import Image
 from utils.ray_config_utils import get_config_and_env
 from environments.env_utils import make_video_from_rgb_imgs

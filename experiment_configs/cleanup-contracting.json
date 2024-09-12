@@ -11,7 +11,7 @@
     "post_fcnet_hiddens": [64,64]
     ,"conv_filters":[[6,[3,3],1]]
   },
-  "wandb":true,
+  "wandb":false,
   "num_renders":5,
   "solver": true, 
   "solver_samples":100 

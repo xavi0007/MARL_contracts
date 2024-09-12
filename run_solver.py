@@ -7,7 +7,10 @@ The low-level implementation of the solver can be found inside environments/two_
 
 
 import copy
-from ray.rllib.agents import ppo
+try:
+    from ray.rllib.agents import ppo
+except ImportError:
+    from ray.rllib.algorithms import ppo
 from PIL import Image
 from utils.ray_config_utils import get_config_and_env,get_neg_config,get_solver_config
 from environments.env_utils import make_video_from_rgb_imgs

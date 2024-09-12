@@ -66,7 +66,7 @@ def ppo_learning(params_dict,config,wb_logger) :
     del config['stop_cond']
     
     analysis = ray.tune.tune.run('PPO',name=params_dict['exp_name'],stop=stop_condition,
-                 config=config,callbacks=[wb_logger],local_dir=params_dict['results_dir'],
+                 config=config,callbacks=[wb_logger],storage_path=params_dict['results_dir'],
                  num_samples=1, verbose=0 ,checkpoint_freq=10, checkpoint_at_end=True)
     
     checkpoint_paths = []

@@ -21,7 +21,7 @@ from environments.two_stage_train import SeparateContractNegotiateStage, Separat
 import numpy as np
 from utils.env_creator_functions import env_creator, get_base_env_tag
 from utils.logger_utils import MetricsCallback 
-from ray.rllib.algorithms.callbacks import MultiCallbacks
+from ray.rllib.algorithms.callbacks import make_multi_callbacks
 from ray.rllib.models import ModelCatalog 
 from environments.Networks.vision_net import VisionNetwork
 
@@ -148,7 +148,7 @@ def get_config_and_env(params_dict):
                     if params_dict['shared_policy'] else (lambda agent_id, episode, worker, **kwargs: agent_id)
             },
 
-            'callbacks': MultiCallbacks([lambda : MetricsCallback()]),
+            'callbacks': make_multi_callbacks([lambda : MetricsCallback()]),
             'num_gpus': params_dict['num_gpus'],
             'stop_cond': {'timesteps_total': params_dict.get("num_timesteps")}
         }

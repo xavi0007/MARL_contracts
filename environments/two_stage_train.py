@@ -1,7 +1,10 @@
 import copy
 
 from ray.rllib.env import MultiAgentEnv
-from ray.rllib.agents import ppo
+try:
+    from ray.rllib.agents import ppo
+except ImportError:
+    from ray.rllib.algorithms import ppo
 from ray.rllib.utils.framework import try_import_tf, try_import_torch
 from ray.rllib.env.apis.task_settable_env import TaskSettableEnv
 import gym
